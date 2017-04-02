@@ -12,7 +12,7 @@ var users = require('./routes/users');
 
 //////////////////
 //We want to create a top menu here.
-var Menu = require('/Users/goliatone/Development/NODEJS/gmenu');
+var Menu = require('gmenu');
 
 let adminMenu = new Menu('Admin', {segment: false});
 
