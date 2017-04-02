@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <ul>
+    <% adminMenu.nodes.map((menu)=>{%>
+        <li><a href="<%= menu.uri %>"><%= menu.name %></li>
+        <ul>
+            <% menu.nodes.map((item)=>{%>
+                <li><a href="<%= item.uri %>" class="<%= item.isActive ? 'active' : ''%>"><%= item.name %></a></li>
+            <%});%>
+        </ul>
+    <%});%>
+    </ul>
+  </body>
+</html>
