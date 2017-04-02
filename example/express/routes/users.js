@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Menu = require('/Users/goliatone/Development/NODEJS/gmenu');
+var Menu = require('gmenu');
 
 let userMenu = Menu.get('admin').addNode('Users');
 userMenu.addNode('Pets');
