@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/goliatone/gmenu/issues"
   },
-  "homepage": "https://github.com/goliatone/gmenu#readme"
+  "homepage": "https://github.com/goliatone/gmenu#readme",
+  "dependencies": {
+    "gextend": "^0.3.0",
+    "slug": "^0.9.1"
+  }
 }
