@@ -95,6 +95,21 @@ This will generate an object:
 }
 ```
 
+The menu will be made available in the views as a local variable under the name returned by `menu.localName`. By default, the name will be `menu.id + 'Menu'`.
+
+```ejs
+<ul>
+<% adminMenu.nodes.map((menu)=>{%>
+    <li><a href="<%= menu.uri %>"><%= menu.name %></li>
+    <ul>
+        <% menu.nodes.map((item)=>{%>
+            <li><a href="<%= item.uri %>" class="<%= item.isActive ? 'active' : ''%>"><%= item.name %></a></li>
+        <%});%>
+    </ul>
+<%});%>
+</ul>
+```
+
 <!--
 https://github.com/mbouclas/mcms-node-menus/
 https://github.com/john-doherty/express-url-breadcrumb
