@@ -103,7 +103,9 @@ The menu will be made available in the views as a local variable under the name 
     <li><a href="<%= menu.uri %>"><%= menu.name %></li>
     <ul>
         <% menu.nodes.map((item)=>{%>
-            <li><a href="<%= item.uri %>" class="<%= item.isActive ? 'active' : ''%>"><%= item.name %></a></li>
+            <li>
+                <a href="<%= item.uri %>" class="<%= item.isActive ? 'active' : ''%>"><%= item.name %></a>
+            </li>
         <%});%>
     </ul>
 <%});%>
