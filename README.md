@@ -3,6 +3,8 @@ Simple menu builder, a Node.js module to create menus in Express applications.
 
 Builds an object with all nodes added to a menu, and makes it available to Express views as a local variable.
 
+It supports lazy instantiation of menus, so you can add submenus before the parent menu has been defined. This is useful if you define your submenus inside your routes and your main menu on your app definition file.
+
 
 ```javascript
 const Menu = require('gmenu');
