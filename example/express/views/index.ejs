@@ -4,9 +4,19 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+  <style>
+  html, body{
+      background-color: #212121;
+      color: #fafafa;
+  }
+   a.active {
+       text-decoration: none;
+       color: #fafafa;
+   }
+  </style>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Generated menu</p>
 
     <ul>
     <% adminMenu.nodes.map((menu)=>{%>
@@ -18,5 +28,11 @@
         </ul>
     <%});%>
     </ul>
+    <br/>
+    <h3>Generated JSON</h3>
+
+    <code>
+        <pre><%- JSON.stringify(adminMenu, null, 4) %></pre>
+    </code>
   </body>
 </html>
