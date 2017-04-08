@@ -25,7 +25,7 @@ let crudMenu = Menu.get('admin').addNode('Pets');
 crudMenu.addNode('Profiles');
 crudMenu.addNode('Owners');
 
-let subMenu = crudMenu.addNode('Types');
+let subMenu = adminMenu.find('pets').addNode('Types');
 subMenu.addNode('Cats');
 subMenu.addNode('Dogs');
 
@@ -59,7 +59,7 @@ app.use('/', routes);
 app.use('/users', users);
 
 var pets = express();
-pets.get('/pets/types/:type', function(req, res){
+pets.get('/pets/types/:type?', function(req, res){
     res.render('index', { title: 'Types' });
 });
 
