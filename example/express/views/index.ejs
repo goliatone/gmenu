@@ -9,10 +9,18 @@
       background-color: #212121;
       color: #fafafa;
   }
+   a {
+       text-decoration: none;
+       line-height: 24px;
+   }
    a.active {
        text-decoration: none;
        color: #fafafa;
    }
+   a.remote {
+       text-decoration: underline;;
+   }
+
   </style>
   <body>
     <h1><%= title %></h1>
@@ -20,10 +28,31 @@
 
     <ul>
     <% adminMenu.nodes.map((menu)=>{%>
-        <li><a href="<%= menu.uri %>"><%= menu.name %></li>
+        <li><a href="<%= menu.uri %>" class="<%= menu.isActive ? 'active' : ''%>"><%= menu.name %></li>
         <ul>
             <% menu.nodes.map((item)=>{%>
-                <li><a href="<%= item.uri %>" class="<%= item.isActive ? 'active' : ''%>"><%= item.name %></a></li>
+                <%if(item.nodes){%>
+                    <li><a href="<%= item.uri %>"
+                        class="<%= item.isActive ? 'active' : ''%> <%= item.isRemote ? 'remote' : ''%>">
+                            <%= item.name %>
+                        </a>
+                        <ul>
+                        <% item.nodes.map((node)=>{%>
+                            <li><a href="<%= node.uri %>"
+                                class="<%= node.isActive ? 'active' : ''%> <%= node.isRemote ? 'remote' : ''%>">
+                                    <%= node.name %>
+                                </a>
+                            </li>
+                        <%});%>
+                        </ul>
+                    </li>
+                <%} else {%>
+                    <li><a href="<%= item.uri %>"
+                        class="<%= item.isActive ? 'active' : ''%> <%= item.isRemote ? 'remote' : ''%>">
+                            <%= item.name %>
+                        </a>
+                    </li>
+                <%}%>
             <%});%>
         </ul>
     <%});%>
