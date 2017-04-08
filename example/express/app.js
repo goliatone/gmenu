@@ -16,16 +16,24 @@ var users = require('./routes/users');
 //We want to create a top menu here.
 var Menu = require('gmenu');
 
+//Create Admin menu, we can access it using:
+//Menu.get('admin');
+//We can add nodes lazyly.
 let adminMenu = new Menu('Admin', {segment: false});
-
-let consoleMenu = Menu.get('admin').addNode('Web Console');
-consoleMenu.addNode('WebSocket');
-consoleMenu.addNode('Payloads');
-consoleMenu.addNode('Requests');
 
 let crudMenu = Menu.get('admin').addNode('Pets');
 crudMenu.addNode('Profiles');
 crudMenu.addNode('Owners');
+
+let subMenu = crudMenu.addNode('Types');
+subMenu.addNode('Cats');
+subMenu.addNode('Dogs');
+
+
+let remoteMenu = Menu.get('admin').addNode('Remote Links', {segment: '#'});
+remoteMenu.addNode('WebSocket', {link: 'http://google.com?q=websocket'});
+remoteMenu.addNode('Payloads', {link: 'http://google.com?q=payloads'});
+remoteMenu.addNode('Requests', {link: 'http://google.com?q=requests'});
 //////////////////
 
 var app = express();
@@ -51,6 +59,10 @@ app.use('/', routes);
 app.use('/users', users);
 
 var pets = express();
+pets.get('/pets/types/:type', function(req, res){
+    res.render('index', { title: 'Types' });
+});
+
 pets.get('/pets/owners', function(req, res){
     res.render('index', { title: 'Owners' });
 });
