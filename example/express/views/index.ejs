@@ -21,8 +21,39 @@
        text-decoration: underline;;
    }
 
+   .breadcrumbs {
+       margin-left: 0;
+       padding-left: 0;
+       display: inline;
+   }
+   .breadcrumbs li {
+       margin-left: 0;
+       list-style: none;
+       display: inline;
+   }
+   .breadcrumbs li:before {
+       content: "\020 \020 \020 \0BB \020";
+       color: #ff9;
+   }
+
+   .breadcrumbs li.depth-0:before {
+       content: " ";
+   }
+   .breadcrumbs li.depth-0 {
+        margin-left: 0;
+        border-left: none;
+        list-style: none;
+        display: inline;
+    }
+
   </style>
   <body>
+    <ul class="breadcrumbs">
+    <% adminMenu.breadcrumbs.map((menu)=>{%>
+        <li class="depth-<%=menu.depth%>"><a href="<%=menu.uri%>"><%=menu.name%></a></li>
+    <%});%>
+    </ul>
+
     <h1><%= title %></h1>
     <p>Generated menu</p>
 
