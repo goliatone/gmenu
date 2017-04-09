@@ -15,10 +15,15 @@
    }
    a.active {
        text-decoration: none;
-       color: #fafafa;
+       color:#ff3366;
+       pointer-events: none;
+       cursor: default;
    }
-   a.remote {
-       text-decoration: underline;;
+   a.external {
+       text-decoration: underline;
+   }
+   a.external:after {
+       content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);
    }
 
    .breadcrumbs {
@@ -45,6 +50,11 @@
         list-style: none;
         display: inline;
     }
+    .breadcrumbs li:last-child a {
+        color:#ff3366;
+        pointer-events: none;
+        cursor: default;
+    }
 
   </style>
   <body>
@@ -66,13 +76,13 @@
             <% menu.nodes.map((item)=>{%>
                 <%if(item.nodes){%>
                     <li><a href="<%= item.uri %>"
-                        class="<%= item.isActive ? 'active' : ''%> <%= item.isRemote ? 'remote' : ''%>">
+                        class="<%= item.isActive ? 'active' : ''%> <%= item.isExternal ? 'external' : ''%>">
                             <%= item.name %>
                         </a>
                         <ul>
                         <% item.nodes.map((node)=>{%>
                             <li><a href="<%= node.uri %>"
-                                class="<%= node.isActive ? 'active' : ''%> <%= node.isRemote ? 'remote' : ''%>">
+                                class="<%= node.isActive ? 'active' : ''%> <%= node.isExternal ? 'external' : ''%>">
                                     <%= node.name %>
                                 </a>
                             </li>
@@ -81,7 +91,7 @@
                     </li>
                 <%} else {%>
                     <li><a href="<%= item.uri %>"
-                        class="<%= item.isActive ? 'active' : ''%> <%= item.isRemote ? 'remote' : ''%>">
+                        class="<%= item.isActive ? 'active' : ''%> <%= item.isExternal ? 'external' : ''%>">
                             <%= item.name %>
                         </a>
                     </li>
