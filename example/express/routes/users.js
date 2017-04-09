@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
@@ -9,15 +11,15 @@ userMenu.addNode('Profiles');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Users' });
+    res.render('index', { title: 'Users' });
 });
 
 router.get('/pets', function(req, res) {
-  res.render('index', { title: 'Pets' });
+    res.render('index', { title: 'Pets' });
 });
 
 router.get('/profiles', function(req, res) {
-  res.render('index', { title: 'Profiles' });
+    res.render('index', { title: 'Profiles' });
 });
 
 module.exports = router;
