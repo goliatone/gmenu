@@ -82,6 +82,10 @@ magicRouter.get('/pets/magic', function(req, res){
 magic.use('/users', magicRouter);
 app.use(magic);
 
+console.log('------- Admin Menu ------');
+Menu.get('admin').toCLI();
+console.log('-------------------------');
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
