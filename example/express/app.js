@@ -11,29 +11,26 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var pets = require('./routes/pets');
 
 //////////////////
 //We want to create a top menu here.
 var Menu = require('gmenu');
 
-//Create Admin menu, we can access it using:
-//Menu.get('admin');
-//We can add nodes lazyly.
+/*
+ * Create Admin menu, we can access it using:
+ */
 let adminMenu = new Menu('Admin', {segment: false});
 
-let crudMenu = Menu.get('admin').addNode('Pets');
-crudMenu.addNode('Profiles');
-crudMenu.addNode('Owners');
-
-let subMenu = adminMenu.find('pets').addNode('Types');
-subMenu.addNode('Cats');
-subMenu.addNode('Dogs');
-
-
-let remoteMenu = Menu.get('admin').addNode('Remote Links', {segment: '#'});
+/*
+ * To access a child menu of admin,
+ * use `find`.
+ */
+let remoteMenu = adminMenu.find('users').addNode('Remote Links', {segment: '#'});
 remoteMenu.addNode('WebSocket', {link: 'http://google.com?q=websocket'});
 remoteMenu.addNode('Payloads', {link: 'http://google.com?q=payloads'});
 remoteMenu.addNode('Requests', {link: 'http://google.com?q=requests'});
+
 //////////////////
 
 var app = express();
@@ -55,36 +52,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(adminMenu.middleware.bind(adminMenu));
 
+app.use((req, res, next)=> {
+    console.log('------- Admin Menu ------');
+    Menu.get('admin').toCLI();
+    console.log('-------------------------');
+    next();
+});
+
 app.use('/', routes);
+
+/*
+ * The route /users defines the Users menu
+ */
 app.use('/users', users);
+app.use('/pets', pets);
 
-var pets = express();
-pets.get('/pets/types/:type?', function(req, res){
-    res.render('index', { title: 'Types' });
-});
 
-pets.get('/pets/owners', function(req, res){
-    res.render('index', { title: 'Owners' });
-});
-pets.get('/pets/profiles', function(req, res){
-    res.render('index', { title: 'Profiles' });
-});
-pets.get('/pets', function(req, res){
-    res.render('index', { title: 'Pets' });
-});
-app.use(pets);
 
-var magic = express();
-var magicRouter = express.Router();
-magicRouter.get('/pets/magic', function(req, res){
-    res.send('abracadabra...');
-});
-magic.use('/users', magicRouter);
-app.use(magic);
-
-console.log('------- Admin Menu ------');
-Menu.get('admin').toCLI();
-console.log('-------------------------');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
