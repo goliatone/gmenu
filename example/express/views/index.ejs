@@ -82,7 +82,9 @@
                         <ul>
                         <% item.nodes.map((node)=>{%>
                             <li><a href="<%= node.uri %>"
-                                class="<%= node.isActive ? 'active' : ''%> <%= node.isExternal ? 'external' : ''%>">
+                                class="<%= node.isActive ? 'active' : ''%> <%= node.isExternal ? 'external' : ''%>"
+                                target="<%= node.isExternal ? '_blank' : '_self'%>"
+                                >
                                     <%= node.name %>
                                 </a>
                             </li>
