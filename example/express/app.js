@@ -27,9 +27,9 @@ let adminMenu = new Menu('Admin', {segment: false});
  * use `find`.
  */
 let remoteMenu = adminMenu.find('users').addNode('Remote Links', {segment: '#'});
-remoteMenu.addNode('WebSocket', {link: 'http://google.com?q=websocket'});
-remoteMenu.addNode('Payloads', {link: 'http://google.com?q=payloads'});
-remoteMenu.addNode('Requests', {link: 'http://google.com?q=requests'});
+remoteMenu.addNode('Twitter', {link: 'http://twitter.com'});
+remoteMenu.addNode('Instagram', {link: 'http://instagram.com'});
+remoteMenu.addNode('Keybase', {link: 'http://keybase.io'});
 
 //////////////////
 
