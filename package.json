@@ -1,6 +1,6 @@
 {
   "name": "gmenu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Menu builder",
   "main": "index.js",
   "scripts": {
