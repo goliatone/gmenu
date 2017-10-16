@@ -4,7 +4,8 @@
   "description": "Menu builder",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "bogota",
+    "dtest": "watch bogota test/"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,14 @@
   "dependencies": {
     "gextend": "^0.3.0",
     "slug": "^0.9.1"
+  },
+  "devDependencies": {
+    "bogota": "^2.0.4",
+    "nyc": "^10.3.2",
+    "sinon": "^2.2.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3",
+    "tape-catch": "^1.0.6",
+    "watch": "^1.0.2"
   }
 }
