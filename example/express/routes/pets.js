@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Menu = require('gmenu');
+var Menu = require('../../..');
 
 /*
  * Create Pets menu, we can access it using:
