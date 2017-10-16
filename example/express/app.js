@@ -15,7 +15,7 @@ var pets = require('./routes/pets');
 
 //////////////////
 //We want to create a top menu here.
-var Menu = require('gmenu');
+var Menu = require('../..');
 
 /*
  * Create Admin menu, we can access it using:
