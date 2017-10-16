@@ -1,7 +1,7 @@
 /*jshint esversion:6, node:true*/
 'use strict';
 
-const Menu = require('.');
+const Menu = require('..');
 
 let adminMenu = new Menu('Admin');
 adminMenu.request = {
