@@ -17,7 +17,7 @@ consoleMenu.addNode('WebSocket');
 consoleMenu.addNode('Payloads');
 consoleMenu.addNode('Requests');
 
-const crudMenu = Menu.get('admin').addNode('Crud');
+const crudMenu = new Menu('Crud');
 crudMenu.segment = 'api';
 crudMenu.addNode('Users');
 crudMenu.addNode('Passports');
