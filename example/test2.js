@@ -40,12 +40,12 @@ let menu = Menu.get('admin').toJSON();
 
 
 console.log('<div id="' + menu.id + '" class="ui small menu">');
-    menu.nodes.map((child)=>{
+    menu.nodes.map(child => {
         console.log('<div class="right menu">');
             console.log('<div class="ui dropdown item">');
                 console.log(child.label);console.log('<i class="dropdown icon"></i>');
                 console.log('<div class="menu">');
-                child.nodes.map((leaf)=>{
+                child.nodes.map(leaf => {
                     console.log('<a class="item">'+leaf.label+'</a>');
                 });
                 console.log('</div>');
