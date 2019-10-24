@@ -4,7 +4,10 @@
 const Menu = require('..');
 
 const topMenu = new Menu('Main',{
-    segment:'/'
+    segment:'/',
+    data: {
+        acl: 'user'
+    }
 });
 
 const adminMenu = new Menu('Admin');
@@ -21,9 +24,15 @@ consoleMenu.addNode('Requests');
 
 const crudMenu = Menu.get('admin').addNode('Crud');
 crudMenu.segment = 'api';
-crudMenu.addNode('Users');
-crudMenu.addNode('Passports');
-crudMenu.addNode('HotDesks');
+crudMenu.addNode('Users', {
+    data: { resource: 'user' }
+});
+crudMenu.addNode('Passports', {
+    data: { resource: 'passport' }
+});
+crudMenu.addNode('HotDesks', {
+    data: { resource: 'hotdesk' }
+});
 
 topMenu.addNode(adminMenu);
 topMenu.addNode(crudMenu);
