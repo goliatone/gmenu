@@ -18,7 +18,7 @@ const topMenu = new Menu('Main', {
         acl: 'user'
     },
     filterNode(node) {
-        console.log('node path', node.uri);
+        console.log('node path', node.keypath);
         let role = this.request.user.role;
         let resource = node.data.resource;
         if(!resource) return node;
@@ -68,6 +68,13 @@ crudMenu.addNode('HotDesks', {
 topMenu.addNode(adminMenu);
 topMenu.addNode(crudMenu);
 
+// console.log(topMenu.find('main').id);
+// console.log(topMenu.find('main.crud').id);
+// console.log(topMenu.find('main.crud.users').id);
+// console.log(topMenu.find('main.admin.debug.websocket').id);
+
+console.log('----- GRANTS -----')
+console.log(ac.getGrants());
 
 const user = { id:1, role:'user' };
 const admin = { id:1, role:'admin' };
