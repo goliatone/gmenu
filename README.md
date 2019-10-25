@@ -48,6 +48,7 @@ This will generate an object:
     "isActive": false,
     "uri": "/admin",
     "data": {},
+    "keypath": "admin",
     "nodes": [
         {
             "id": "web-console",
@@ -56,6 +57,7 @@ This will generate an object:
             "isActive": false,
             "uri": "/admin/web-console",
             "data": {},
+            "keypath": "admin.web-console",
             "nodes": [
                 {
                     "id": "websocket",
@@ -64,6 +66,7 @@ This will generate an object:
                     "isActive": false,
                     "uri": "/admin/web-console/websocket",
                     "data": {},
+                    "keypath": "admin.web-console.websocket",
                 },
                 {
                     "id": "payloads",
@@ -72,6 +75,7 @@ This will generate an object:
                     "isActive": false,
                     "uri": "/admin/web-console/payloads",
                     "data": {},
+                    "keypath": "admin.web-console.payloads",
                 },
                 {
                     "id": "requests",
@@ -80,6 +84,7 @@ This will generate an object:
                     "isActive": false,
                     "uri": "/admin/web-console/requests",
                     "data": {},
+                    "keypath": "admin.web-console.requests",
                 }
             ]
         },
@@ -90,6 +95,7 @@ This will generate an object:
             "isActive": false,
             "uri": "/admin/api",
             "data": {},
+            "keypath": "admin.crud",
             "nodes": [
                 {
                     "id": "users",
@@ -99,7 +105,8 @@ This will generate an object:
                     "uri": "/admin/api/users",
                     "data": {
                         "resource": "user"
-                    }
+                    },
+                    "keypath": "admin.crud.users",
                 },
                 {
                     "id": "passports",
@@ -109,7 +116,8 @@ This will generate an object:
                     "uri": "/admin/api/passports",
                     "data": {
                         "resource": "passport"
-                    }
+                    },
+                    "keypath": "admin.crud.passports",
                 }
             ]
         }
