@@ -3,19 +3,14 @@
 
 const Menu = require('..');
 
-const topMenu = new Menu('Main',{
-    segment:'/',
+const topMenu = new Menu('Main', {
+    segment: '/',
     data: {
         acl: 'user'
     }
 });
 
 const adminMenu = new Menu('Admin');
-adminMenu.request = {
-    route: {
-        path: '/admin/api/users'
-    }
-};
 
 const consoleMenu = Menu.get('admin').addNode('Console');
 consoleMenu.addNode('WebSocket');
@@ -27,11 +22,11 @@ crudMenu.segment = 'api';
 crudMenu.addNode('Users', {
     data: { resource: 'user' }
 });
-crudMenu.addNode('Passports', {
-    data: { resource: 'passport' }
+crudMenu.addNode('Profile', {
+    data: { resource: 'profile' }
 });
-crudMenu.addNode('HotDesks', {
-    data: { resource: 'hotdesk' }
+crudMenu.addNode('Options', {
+    data: { resource: 'options' }
 });
 
 topMenu.addNode(adminMenu);
@@ -54,17 +49,17 @@ console.log(JSON.stringify(crud.toJSON(), null, 4));
 console.log('------ HTML MENU -----');
 let menu = Menu.get('admin').toJSON();
 console.log('<div id="' + menu.id + '" class="ui small menu">');
-    menu.nodes.map(child => {
-        console.log('  <div class="right menu">');
-            console.log('    <div class="ui dropdown item">');
-                console.log('      <i class="dropdown icon"></i>');
-                console.log('      <div class="menu">');
-                child.nodes.map(leaf => {
-                    console.log('        <a class="item">'+leaf.name+'</a>');
-                });
-                console.log('      </div>');
-            console.log('    </div>');
-        console.log('  </div>');
+menu.nodes.map(child => {
+    console.log(`  <div class="right menu">
+                     <div class="ui dropdown item">
+                       <i class="dropdown icon"></i>
+                       <div class="menu">`);
+    child.nodes.map(leaf => {
+        console.log(`        <a href="${leaf.uri}" class="item">${leaf.name}</a>`);
     });
-    console.log('');
+    console.log('      </div>');
+    console.log('    </div>');
+    console.log('  </div>');
+});
+console.log('');
 console.log('</div>');
